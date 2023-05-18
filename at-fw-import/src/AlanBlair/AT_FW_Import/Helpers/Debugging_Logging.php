@@ -2,14 +2,12 @@
 
 namespace AlanBlair\AT_FW_Import\Helpers;
 
-use AlanBlair\AT_FW_Import\App\AppController;
 use Monolog\Handler\RotatingFileHandler;
-use Monolog\Handler\StreamHandler;
-use Monolog\Level;
 use Monolog\Logger;
 
 class Debugging_Logging
 {
+    private $_debug_enabled;
     private $_log_enabled;
     private $_log_path;
 

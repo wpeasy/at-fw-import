@@ -81,7 +81,10 @@ class VariableParser
 
                 case 'var':
                     $var = $this->_extract_variable_name($line);
-                    $current_category_array['items'][] = $var;
+                    if(false === array_search($var, $current_category_array['items'])){
+                        $current_category_array['items'][] = $var;
+                    }
+
                     break;
 
                 default:
@@ -97,7 +100,7 @@ class VariableParser
     }
 
     private function _extract_category_name($line){
-        if(preg_match('/\@at-category\:(.*)/i', $line, $matches)) {
+        if(preg_match('/@at-category\s*:([^*]*)/i', $line, $matches)) {
            return trim($matches[1]);
         }
     }
@@ -105,7 +108,7 @@ class VariableParser
     private function _extract_variable_name($line){
         $line = trim($line);
         if(preg_match('/^(--.*):/i', $line, $matches)) {
-           return trim($matches[1],'-');
+           return trim($matches[1],"- \n\r\t\v\x00");
         }
     }
 

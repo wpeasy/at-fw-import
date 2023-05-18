@@ -35,6 +35,7 @@ class AppController
     {
         $this->logger = Debugging_Logging::get_instance($this->_config['debug'],$this->_config['logging'], $this->_config['log_path'] . '/atfwi/');
         Settings::get_instance();
+        return self::$_instance;
     }
 
     /**
