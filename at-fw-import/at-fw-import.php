@@ -28,11 +28,11 @@ add_action('plugins_loaded', function() use ($app){
         $urls = get_option('atfwi_urls');
         if(false === $urls){ return $value;}
 
-        $urlsArrar= explode("\n", $urls);
+        $urlsArray= explode("\n", $urls);
         if(! is_array($value)){ $value = []; };
         $parsed = [];
 
-        foreach ($urlsArrar as $urlsString ){
+        foreach ($urlsArray as $urlsString ){
             $p = new VariableParser($urlsString);
             $parsed = array_merge($parsed, $p->parse());
         }
@@ -44,11 +44,11 @@ add_action('plugins_loaded', function() use ($app){
         $urls = get_option('atfwi_urls');
         if(false === $urls){ return $value;}
 
-        $urlsArrar= explode("\n", $urls);
+        $urlsArray= explode("\n", $urls);
         if(! is_array($value)){ $value = []; };
 
         $parsed = [];
-        foreach ($urlsArrar as $urlsString ){
+        foreach ($urlsArray as $urlsString ){
             $p = new ClassParser($urlsString);
             $parsed = array_merge($parsed, $p->parse());
         }
