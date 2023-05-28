@@ -1,0 +1,383 @@
+/* @at-category: X Offsets */
+:root{
+
+  --x-cta-offset: #{$cta-offset};
+  --x-cta-offset--neg: calc(-1 * var(--x-cta-offset));
+
+  /* Mob first header heights */
+  @each $name, $value in $header-heights{
+    @include breakpoint($name){
+      --x-header-height: #{$value};
+    }
+  }
+}
+
+
+/* @at-category: X Size */
+:root{
+  @each $name, $value in $sizes {
+    --x-size--#{$name}: #{$value}rem;
+  }
+}
+
+/*
+@at-category: X Radius
+Use var, so can be overriden independant of "size"
+*/
+:root{
+  @each $name, $value in $sizes {
+    --x-radius--#{$name}: var(--x-size--#{$name});
+  }
+}
+
+/* @at-category: X Box Shadows */
+:root{
+  @each $name, $value in $box-shadows {
+    --x-box-shadow--#{$name}: #{$value};
+  }
+}
+
+
+/* @at-category: X Grid */
+:root{
+  @for $i from 1 through 12{
+    --x-grid--#{$i}: repeat(#{$i}, minmax(0,1fr));
+  }
+
+  --x-grid--1-2: minmax(0,1fr) minmax(0,2fr);
+  --x-grid--1-3: minmax(0,1fr) minmax(0,3fr);
+  --x-grid--1-4: minmax(0,1fr) minmax(0,4fr);
+  --x-grid--1-5: minmax(0,1fr) minmax(0,5fr);
+  --x-grid--1-6: minmax(0,1fr) minmax(0,6fr);
+
+  --x-grid--2-1: minmax(0,2fr) minmax(0,1fr);
+  --x-grid--3-1: minmax(0,3fr) minmax(0,1fr);
+  --x-grid--4-1: minmax(0,4fr) minmax(0,1fr);
+  --x-grid--5-1: minmax(0,5fr) minmax(0,1fr);
+  --x-grid--6-1: minmax(0,6fr) minmax(0,1fr);
+}
+
+/* @at-category: X Colors */
+$transparencies: (
+        2,5,7,10,20,30,40,50,60,70,80,90
+);
+
+:root{
+  --x-shadow-color: #{$shadow-color};
+  --x-color-white: #{$color-white};
+  @each $ammount in $transparencies{
+    --x-color-white--#{$ammount}: #{ transparentize($color-white, (1 - ($ammount / 100)) ) };
+  }
+  --x-color-black: #{$color-black};
+  @each $ammount in $transparencies{
+    --x-color-black--#{$ammount}: #{ transparentize($color-black, (1 - ($ammount / 100)) ) };
+  }
+}
+
+/* @at-category: X Animation */
+:root{
+  --x-animation--slow: #{$animation-slow};
+  --x-animation--medium: #{$animation-medium};
+  --x-animation--fast: #{$animation-fast};
+  --x-animation--x-fast: #{$animation-x-fast};
+}
+
+/* @at-category: X Borders */
+:root{
+  --x-border-glass--white: 5px solid var(--x-color-white--30);
+  --x-border-glass--black: 5px solid var(--x-color-black--30);
+}
+.x-border-glass--white{
+  border: var(--x-border-glass--white);
+}
+.x-border-glass--black{
+  border: var(--x-border-glass--black);
+}
+
+/*
+@UTIL: X Display
+*/
+.x-relative{
+  position: relative;
+}
+
+.x-isolate{
+  isolation: isolate;
+}
+
+.x-image-as-bg__wapper{
+  position: relative;
+  isolation: isolate;
+}
+.x-image-as-bg__image{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/*
+@Util: X Box Shadows
+*/
+@each $name, $value in $box-shadows {
+  .x-box-shadow--#{$name}{ box-shadow: var(--x-box-shadow--#{$name}) };
+}
+
+
+/*
+@UTIL: X Buttons
+*/
+@each $color in $colors{
+  .x-btn--#{$color}{
+    background: var(--#{$color});
+    color: var(--#{$color}-l-6);
+    border: #{$button-border-width} solid transparent ;
+    border-radius: #{$button-radius};
+
+    &:hover{
+      color: var(--#{$color}-d-3);
+      background-color: var(--#{$color}-l-3);
+    }
+
+    &-alt{
+      background: var(--#{$color});
+      color: var(--#{$color}-d-6);
+      border: #{$button-border-width} solid transparent ;
+      border-radius: #{$button-radius};
+
+      &:hover{
+        color: var(--#{$color}-l-3);
+        background-color: var(--#{$color}-d-3);
+      }
+
+      &.x-btn--outline{
+        background: transparent;
+        border: #{$button-border-width} solid var(--#{$color}) ;
+      }
+    }
+
+    &.x-btn--outline{
+      background: transparent;
+      border: #{$button-border-width} solid var(--#{$color}) ;
+    }
+  }
+}
+
+/*
+@UTIL: Links
+*/
+.x-clickable-parent{
+  &:not(a) {
+    position: static ;
+
+    a{ position: static }
+
+    & > a{
+      content: "";
+      position: absolute;
+      inset: 0;
+      cursor: pointer !important;
+      display: flex;
+    }
+  }
+}
+a.x-clickable-parent{
+  &::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    cursor: pointer !important;
+    display: flex;
+  }
+}
+
+
+
+
+/*
+@UTIL: Grids
+*/
+/* Remove broswer default styles for lists as Grid
+Node: does not work on Bricks Editor.
+*/
+ul.brx-grid, ol.brx-grid{
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style-type: none !important;
+}
+
+/* For above to work in Editor. Remoce if causing any issues */
+ul.brxe-block , ol.brxe-block {
+  padding: 0 ;
+  margin: 0 ;
+  list-style-type: none !important;
+}
+
+
+/*
+@UTIL: Forms
+*/
+
+.x-ws-form {
+  input[type=date].wsf-field, input[type=datetime-local].wsf-field, input[type=file].wsf-field, input[type=month].wsf-field, input[type=password].wsf-field, input[type=search].wsf-field, input[type=time].wsf-field, input[type=week].wsf-field, input[type=email].wsf-field, input[type=number].wsf-field, input[type=tel].wsf-field, input[type=text].wsf-field, input[type=url].wsf-field, select.wsf-field, textarea.wsf-field{
+
+    border-radius: #{$form-input-border-radius};
+    border-color: #{$form-input-border-color};
+    border-width: #{$form-input-border-width};
+    padding: #{$form-input-padding};
+
+    &:focus{
+      border-color: #{$form-input-focus-border-color};
+      background: #{$form-input-focus-background};
+    }
+  }
+
+  button.wsf-button.wsf-button-primary{
+    background: #{$form-button-bg};
+    color:  #{$form-button-color};
+    border:  #{$form-button-border};
+    border-radius: #{$button-radius};
+  }
+
+  input[type=checkbox], input[type=radio]{
+    &.wsf-field:checked + label.wsf-label::before{
+      background-color: #{$form-check-bg-color};
+      border-color: #{$form-check-bg-color};
+    }
+  }
+
+  select.wsf-field:not([multiple]):not([size]){
+    padding: #{$form-input-padding};
+    height: auto;
+  }
+
+  .brxc-dark &{
+    input[type=date].wsf-field, input[type=datetime-local].wsf-field, input[type=file].wsf-field, input[type=month].wsf-field, input[type=password].wsf-field, input[type=search].wsf-field, input[type=time].wsf-field, input[type=week].wsf-field, input[type=email].wsf-field, input[type=number].wsf-field, input[type=tel].wsf-field, input[type=text].wsf-field, input[type=url].wsf-field, select.wsf-field, textarea.wsf-field{
+      background: #{$form-dark-input-bg-color};
+      color: #{$form-dark-input-color};
+      border-color: #{$form-dark-input-border-color};
+    }
+    label, input[type=checkbox].wsf-field + label.wsf-label, input[type=radio].wsf-field + label.wsf-label{
+      color: #{$form-dark-input-color};
+    }
+
+    select.wsf-field:not([multiple]):not([size]){
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='5' viewBox='169 177 10 5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffffff' fill-rule='evenodd' d='M174 182l5-5h-10'/%3E%3C/svg%3E");
+    }
+
+    .wsf-label-position-inside canvas.wsf-field + label, .wsf-label-position-inside select.wsf-field + label, .wsf-label-position-inside input.wsf-field[placeholder]:focus + label, .wsf-label-position-inside input.wsf-field[placeholder]:not(:placeholder-shown) + label, .wsf-label-position-inside textarea.wsf-field[placeholder]:focus + label, .wsf-label-position-inside textarea.wsf-field[placeholder]:not(:placeholder-shown) + label, .wsf-label-position-inside canvas.wsf-field + .wsf-input-group-append + label, .wsf-label-position-inside select.wsf-field + .wsf-input-group-append + label, .wsf-label-position-inside input.wsf-field[placeholder]:focus + .wsf-input-group-append + label, .wsf-label-position-inside input.wsf-field[placeholder]:not(:placeholder-shown) + .wsf-input-group-append + label, .wsf-label-position-inside textarea.wsf-field[placeholder]:focus + .wsf-input-group-append + label, .wsf-label-position-inside textarea.wsf-field[placeholder]:not(:placeholder-shown) + .wsf-input-group-append + label{
+      background-color: #{$form-dark-label-bg-color};
+    }
+  }
+}
+
+
+/**** ACCESSIBILITY */
+body.bricks-is-frontend {
+  @include focus-styles;
+}
+
+// Skip Link
+.skip-link {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  transform: translateY(-250%);
+  background: var(--action-d-3);
+  color: var(--action-l-6);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.link--skip {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  transform: translateY(-250%);
+  background: var(--action-d-3);
+  color: var(--action-l-6);
+}
+
+.link--skip:focus {
+  transform: translateY(0);
+}
+
+// Hidden Accessible
+
+.bricks-area .x-hidden-accessible {
+  position: relative !important;
+  inline-size: 20px !important;
+  block-size: auto !important;
+  margin: 0;
+  line-height: 1;
+  visibility: hidden;
+}
+
+.bricks-area .x-hidden-accessible::before {
+  content: "A";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  background: #111;
+  color: #f5f5f5;
+  font-size: max(60%, 13px);
+  padding: 0.5em;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 20px;
+  block-size: 20px;
+  visibility: visible;
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/****** ANIMATION */
+.x-move-on-hover--small{
+  transform: translateY(0);
+  transition: transform var(--x-animation--fast);
+
+  &:hover{
+    transform: translateY(-8px);
+  }
+}
+
+.x-elevate-on-hover{
+  transform: translateY(0);
+  transition: all var(--x-animation--fast);
+  box-shadow: var(--x-box-shadow--medium) ;
+
+  &:hover{
+    transform: translateY(-8px);
+    box-shadow: var(--x-box-shadow--large) ;
+  }
+}
+
+
+/** Empty Classes for Bricks Forge GSAP targeting */
+.bf-gsap-scrub-to-0{
+  opacity: 1;
+}
+
+
+

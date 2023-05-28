@@ -1,0 +1,52 @@
+/* @Mixins */
+// MAX WIDTH - Mobile first
+@mixin breakpoint($extension) {
+  @media (max-width: map-get($breakpoints, $extension)) {
+    @content;
+  }
+}
+
+// MIN WIDTH
+@mixin breakpoint-up($extension) {
+  @media (min-width: map-get($breakpoints, $extension)) {
+    @content;
+  }
+}
+
+@mixin default-focus-style {
+  outline-style: solid;
+  outline-color: $focus-color;
+  outline-inline-size: $focus-width;
+  outline-offset: $focus-offset;
+}
+
+@mixin focus-styles {
+  *:focus,
+  button:focus {
+    @include default-focus-style;
+  }
+
+  *:focus:not(:focus-visible),
+  button:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /*Disables focus on finger touch for mobile devices*/
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  // Custom Focus Colors
+  // Requires Builder Overrides
+
+  @each $color, $value in $colors {
+    *:focus {
+      &.focus--#{$color} {
+        outline-color: var(--#{$color});
+      }
+    }
+    .focus--#{$color} *:focus {
+      outline-color: var(--#{$color});
+    }
+  }
+}
