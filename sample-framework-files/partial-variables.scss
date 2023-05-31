@@ -22,7 +22,8 @@ $sizes : (
         'xl': 7,
         '2xl': 11,
         '3xl': 15,
-        '4xl': 24
+        '4xl': 24,
+        '5xl': 35
 );
 
 /* Manally measure and update here */
@@ -35,7 +36,7 @@ $header-heights:(
         'xs': 68px,
 );
 
-/* Breakpoints */
+/* Breakpoints in px */
 $breakpoint-xs: 360px !default;
 $breakpoint-mobile-portrait: 479px !default;
 $breakpoint-mobile-landscape: 768px !default;
@@ -43,20 +44,29 @@ $breakpoint-tablet-portrait: 992px !default;
 $breakpoint-desktop: 1920px !default;
 $breakpoint-large: 10000px !default;
 
-$breakpoint-xs-val: $breakpoint-xs - 1px;
-$breakpoint-mobile-portrait-val: $breakpoint-mobile-portrait - 1px;
-$breakpoint-mobile-landscape-val: $breakpoint-mobile-landscape - 1px;
-$breakpoint-tablet-portrait-val: $breakpoint-tablet-portrait - 1px;
-$breakpoint-desktop-val: $breakpoint-desktop - 1px;
-$breakpoint-large-val: $breakpoint-large - 1px;
+$breakpoint-xs-down: $breakpoint-xs - 1px;
+$breakpoint-mobile-portrait-down: $breakpoint-mobile-portrait - 1px;
+$breakpoint-mobile-landscape-down: $breakpoint-mobile-landscape - 1px;
+$breakpoint-tablet-portrait-down: $breakpoint-tablet-portrait - 1px;
+$breakpoint-desktop-down: $breakpoint-desktop - 1px;
+$breakpoint-large-down: $breakpoint-large - 1px;
 
-$breakpoints: (
-        'large': $breakpoint-large-val,
-        'desktop': $breakpoint-desktop-val,
-        'tablet-portrait': $breakpoint-tablet-portrait-val,
-        'mobile-landscape': $breakpoint-mobile-landscape-val,
-        'mobile-portrait': $breakpoint-mobile-portrait-val,
-        'xs': $breakpoint-xs-val,
+$breakpoints-up: (
+        'large': $breakpoint-large,
+        'desktop': $breakpoint-desktop,
+        'tablet-portrait': $breakpoint-tablet-portrait,
+        'mobile-landscape': $breakpoint-mobile-landscape,
+        'mobile-portrait': $breakpoint-mobile-portrait,
+        'xs': $breakpoint-xs,
+);
+
+$breakpoints-down: (
+        'large': $breakpoint-large-down,
+        'desktop': $breakpoint-desktop-down,
+        'tablet-portrait': $breakpoint-tablet-portrait-down,
+        'mobile-landscape': $breakpoint-mobile-landscape-down,
+        'mobile-portrait': $breakpoint-mobile-portrait-down,
+        'xs': $breakpoint-xs-down,
 );
 
 /* Buttons */
@@ -100,9 +110,15 @@ $animation-x-fast: 0.3s;
 $box-shadows: (
         small: "0.5px 1px 1px hsl(var(--x-shadow-color) / 0.2)",
 
-        medium: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1),2px 4px 4px hsl(var(--x-shadow-color) / 0.1),3px 6px 6px hsl(var(--x-shadow-color) / 0.06)",
+        medium: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1),
+        2px 4px 4px hsl(var(--x-shadow-color) / 0.1),
+        3px 6px 6px hsl(var(--x-shadow-color) / 0.06)",
 
-        large: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1),2px 4px 4px hsl(var(--x-shadow-color) / 0.05),4px 8px 8px hsl(var(--x-shadow-color) / 0.1),8px 16px 16px hsl(var(--x-shadow-color) / 0.1),16px 32px 32px hsl(var(--x-shadow-color) / 0.15)"
+        large: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1),
+        2px 4px 4px hsl(var(--x-shadow-color) / 0.05),
+        4px 8px 8px hsl(var(--x-shadow-color) / 0.1),
+8px 16px 16px hsl(var(--x-shadow-color) / 0.1),
+16px 32px 32px hsl(var(--x-shadow-color) / 0.15)"
 );
 
 /***** END SCSS VARIABLES*/

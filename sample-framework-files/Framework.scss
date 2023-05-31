@@ -6,7 +6,7 @@
 
   /* Mob first header heights */
   @each $name, $value in $header-heights{
-    @include breakpoint($name){
+    @include breakpoint-down($name){
       --x-header-height: #{$value};
     }
   }
