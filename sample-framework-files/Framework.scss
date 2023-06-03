@@ -1,4 +1,10 @@
-/* @at-category: X Offsets */
+/* Uncomment for WPCodeBox, With Scripts Organiser use teh Partials UI to include these
+@use '_variables';
+@use '_mixins';
+*/
+ */
+
+/* @at-category: X Site Defaults */
 :root{
 
   --x-cta-offset: #{$cta-offset};
@@ -10,8 +16,17 @@
       --x-header-height: #{$value};
     }
   }
-}
 
+  --x-section-gap: var(--at-clamp--xl);
+  --x-content-gap: var(--at-clamp--s);
+
+  --x-card-gap: var(--at-clamp--l);
+  --x-card-padding: var(--x-size--s);
+  --x-card-border: none;
+  --x-card-bg-color: var(--primary-d-2);
+  --x-card-box-shadow: var(--x-box-shadow--medium);
+  --x-card-border-radius: var(--x-size--s);
+}
 
 /* @at-category: X Size */
 :root{
@@ -378,6 +393,3 @@ body.bricks-is-frontend {
 .bf-gsap-scrub-to-0{
   opacity: 1;
 }
-
-
-

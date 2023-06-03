@@ -9,10 +9,11 @@
  * License: GPL2
  * Text Domain: at-fw-import
  */
-// If this file is called directly, abort.
+
 use AlanBlair\AT_FW_Import\Parser\ClassParser;
 use AlanBlair\AT_FW_Import\Parser\VariableParser;
 
+// If this file is called directly, abort.
 if (!defined('WPINC')) { die; }
 
 
@@ -24,6 +25,7 @@ $app = \AlanBlair\AT_FW_Import\App\AppController::get_instance(require __DIR__ .
 
 add_action('plugins_loaded', function() use ($app){
 
+
     add_filter('at/css_var_framework/import_vars', function ($value) {
         $urls = get_option('atfwi_urls');
         if(false === $urls){ return $value;}
@@ -33,12 +35,17 @@ add_action('plugins_loaded', function() use ($app){
         $parsed = [];
 
         foreach ($urlsArray as $urlsString ){
-            $p = new VariableParser($urlsString);
-            $parsed = array_merge($parsed, $p->parse());
+            $vp = new VariableParser($urlsString);
+            $p = $vp->parse();
+            if(is_array($p)){
+                $parsed = array_merge($parsed, $p);
+            }
         }
 
         return array_merge($value, $parsed);
     });
+
+
 
     add_filter('at/imported_classes/import_classes', function ($value) {
         $urls = get_option('atfwi_urls');
@@ -49,11 +56,16 @@ add_action('plugins_loaded', function() use ($app){
 
         $parsed = [];
         foreach ($urlsArray as $urlsString ){
-            $p = new ClassParser($urlsString);
-            $parsed = array_merge($parsed, $p->parse());
+            $cp = new ClassParser($urlsString);
+            $p = $cp->parse();
+            if(is_array($p)){
+                $parsed = array_merge($parsed, $p);
+            }
+
         }
 
         return array_merge($value, $parsed);
     });
+
 });
 

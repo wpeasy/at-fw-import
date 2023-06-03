@@ -2,11 +2,11 @@
 
 /* Lowercase color names from AT Color Pallets */
 $colors:(
-        'primary',
-        'action',
-        'secondary',
-        'accent',
-        'shade'
+        'at-primary',
+        'at-action',
+        'at-secondary',
+        'at-accent',
+        'at-shade'
 );
 $color-white: #fff;
 $color-black: #000;
@@ -28,12 +28,12 @@ $sizes : (
 
 /* Manally measure and update here */
 $header-heights:(
-        'large': 87px,
-        'desktop': 87px,
-        'tablet-portrait': 68px,
-        'mobile-landscape': 68px,
-        'mobile-portrait': 68px,
-        'xs': 68px,
+        'large': 82px,
+        'desktop': 82px,
+        'tablet-portrait': 82px,
+        'mobile-landscape': 82px,
+        'mobile-portrait': 82px,
+        'xs': 82px,
 );
 
 /* Breakpoints in px */
@@ -110,15 +110,9 @@ $animation-x-fast: 0.3s;
 $box-shadows: (
         small: "0.5px 1px 1px hsl(var(--x-shadow-color) / 0.2)",
 
-        medium: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1),
-        2px 4px 4px hsl(var(--x-shadow-color) / 0.1),
-        3px 6px 6px hsl(var(--x-shadow-color) / 0.06)",
+        medium: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1),2px 4px 4px hsl(var(--x-shadow-color) / 0.1), 3px 6px 6px hsl(var(--x-shadow-color) / 0.06)",
 
-        large: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1),
-        2px 4px 4px hsl(var(--x-shadow-color) / 0.05),
-        4px 8px 8px hsl(var(--x-shadow-color) / 0.1),
-        8px 16px 16px hsl(var(--x-shadow-color) / 0.1),
-        16px 32px 32px hsl(var(--x-shadow-color) / 0.15)"
+        large: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1), 2px 4px 4px hsl(var(--x-shadow-color) / 0.05), 4px 8px 8px hsl(var(--x-shadow-color) / 0.1), 8px 16px 16px hsl(var(--x-shadow-color) / 0.1), 16px 32px 32px hsl(var(--x-shadow-color) / 0.15)"
 );
 
 /***** END SCSS VARIABLES*/
