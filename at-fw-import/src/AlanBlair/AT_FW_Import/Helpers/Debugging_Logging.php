@@ -42,18 +42,22 @@ class Debugging_Logging
 
 
     public function error($message){
+        if(!$this->_log_enabled){ return; }
         $this->_log_instance->error($message);
     }
 
     public function warn($message){
+        if(!$this->_log_enabled){ return; }
         $this->_log_instance->warn($message);
     }
 
     public function info($message){
+        if(!$this->_log_enabled){ return; }
         $this->_log_instance->info($message);
     }
 
     public function debug($message){
+        if(!$this->_log_enabled){ return; }
         $this->_log_instance->debug($message);
     }
 
