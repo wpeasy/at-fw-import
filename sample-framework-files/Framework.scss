@@ -1,14 +1,8 @@
-/* Uncomment for WPCodeBox, With Scripts Organiser use teh Partials UI to include these
 @use '_variables';
 @use '_mixins';
-*/
- */
 
 /* @at-category: X Site Defaults */
 :root{
-
-  --x-cta-offset: #{$cta-offset};
-  --x-cta-offset--neg: calc(-1 * var(--x-cta-offset));
 
   /* Mob first header heights */
   @each $name, $value in $header-heights{
@@ -17,15 +11,34 @@
     }
   }
 
-  --x-section-gap: var(--at-clamp--xl);
-  --x-content-gap: var(--at-clamp--s);
+  /* Standard spacing */
+  --x-section-gap: #{$section-gap};
+  --x-container-gap: #{$container-gap};
+  --x-content-gap: #{$content-gap};
 
-  --x-card-gap: var(--at-clamp--l);
-  --x-card-padding: var(--x-size--s);
-  --x-card-border: none;
-  --x-card-bg-color: var(--primary-d-2);
-  --x-card-box-shadow: var(--x-box-shadow--medium);
-  --x-card-border-radius: var(--x-size--s);
+  /* Card defaults */
+  --x-card-gap: #{$card-gap};
+  --x-card-padding: #{$card-padding};
+  --x-card-border: #{$card-border};
+  --x-card-bg-color: #{$card-bg-color};
+  --x-card-box-shadow: #{$card-box-shadow};
+  --x-card-border-radius: #{$card-border-radius};
+}
+
+/* @at-category: Offsets */
+:root{
+  --x-cta-offset: #{$cta-offset};
+  --x-cta-offset--neg: calc(-1 * var(--x-cta-offset));
+
+  --x-size-clamp--xl-plus-header: calc(var(--at-size-clamp--xl) + var(--x-header-height));
+  --x-size-clamp--2xl-plus-header: calc(var(--at-size-clamp--2xl) + var(--x-header-height));
+  --x-size-clamp--3xl-plus-header: calc(var(--at-size-clamp--3xl) + var(--x-header-height));
+  --x-size-clamp--4xl-plus-header: calc(var(--at-size-clamp--4xl) + var(--x-header-height));
+
+  --x-size-clamp--xl-plus-cta-offset: calc(var(--at-size-clamp--xl) + var(--x-cta-offset));
+  --x-size-clamp--2xl-plus-cta-offset: calc(var(--at-size-clamp--2xl) + var(--x-cta-offset));
+  --x-size-clamp--3xl-plus-cta-offset: calc(var(--at-size-clamp--3xl) + var(--x-cta-offset));
+  --x-size-clamp--4xl-plus-cta-offset: calc(var(--at-size-clamp--4xl) + var(--x-cta-offset));
 }
 
 /* @at-category: X Size */
@@ -73,18 +86,18 @@ Use var, so can be overriden independant of "size"
 }
 
 /* @at-category: X Colors */
-$transparencies: (
+$opacities: (
         2,5,7,10,20,30,40,50,60,70,80,90
 );
 
 :root{
   --x-shadow-color: #{$shadow-color};
   --x-color-white: #{$color-white};
-  @each $ammount in $transparencies{
+  @each $ammount in $opacities{
     --x-color-white--#{$ammount}: #{ transparentize($color-white, (1 - ($ammount / 100)) ) };
   }
   --x-color-black: #{$color-black};
-  @each $ammount in $transparencies{
+  @each $ammount in $opacities{
     --x-color-black--#{$ammount}: #{ transparentize($color-black, (1 - ($ammount / 100)) ) };
   }
 }
@@ -102,6 +115,16 @@ $transparencies: (
   --x-border-glass--white: 5px solid var(--x-color-white--30);
   --x-border-glass--black: 5px solid var(--x-color-black--30);
 }
+
+/* @at-category: X Breakpoints */
+:root{
+  /* mobile first breakpoints */
+  @each $name, $value in $breakpoints-down {
+    --x-bp--#{$name}: #{$value};
+  }
+}
+
+
 .x-border-glass--white{
   border: var(--x-border-glass--white);
 }
@@ -209,27 +232,35 @@ a.x-clickable-parent{
   }
 }
 
-
-
-
 /*
-@UTIL: Grids
+@UTIL: Text Columns
 */
-/* Remove broswer default styles for lists as Grid
-Node: does not work on Bricks Editor.
-*/
-ul.brx-grid, ol.brx-grid{
-  padding: 0 !important;
-  margin: 0 !important;
-  list-style-type: none !important;
+[class*="x-text-columns"]{
+  column-gap: #{$text-column-gap};
+  column-rule-style: #{$text-column-rule-style};
+  column-rule-width: #{$text-column-rule-width};
+  column-rule-color: #{$text-column-rule-color};
+}
+.x-text-columns--2{ column-count: 2 }
+.x-text-columns--3{ column-count: 3 }
+.x-text-columns--4{ column-count: 4 }
+
+@each $name, $value in $header-heights{
+    @include breakpoint-down($name){
+      .x-ingore{ display: none};
+
+      .x-text-columns--#{$name}-2{ 
+        column-count: 2
+      };
+
+      .x-text-columns--#{$name}-1{ 
+        column-count: 1
+      };
+
+    }
 }
 
-/* For above to work in Editor. Remoce if causing any issues */
-ul.brxe-block , ol.brxe-block {
-  padding: 0 ;
-  margin: 0 ;
-  list-style-type: none !important;
-}
+
 
 
 /*
@@ -387,6 +418,40 @@ body.bricks-is-frontend {
     box-shadow: var(--x-box-shadow--large) ;
   }
 }
+
+
+
+/*
+@STYLE CHANGES
+*/
+/* clip box when image is in a figure */
+figure.brxe-image{ overflow: hidden; }
+
+/* Remove broswer default styles for lists as Grid
+Node: does not work on Bricks Editor.
+*/
+ul.brx-grid, ol.brx-grid{
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style-type: none !important;
+}
+
+/* For above to work in Editor. Remove if causing any issues */
+ul.brxe-block , ol.brxe-block {
+  padding: 0 ;
+  margin: 0 ;
+  list-style-type: none !important;
+}
+
+/* add bottom margin to any headings inside a Bricks Text Widget */ 
+.brxe-text {
+  h1,h2,h3,h4,h5,h6{
+    margin-bottom: 0.25em;
+  }
+    
+}
+
+
 
 
 /** Empty Classes for Bricks Forge GSAP targeting */

@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'debug' => true, /* May require BugFu */
-    'logging' => true,
+    'debug' => false, /* May require BugFu */
+    'logging' => false,
     'file' => __FILE__,
     'dir' => __DIR__,
     'url' => plugin_dir_url(__FILE__) . '/',

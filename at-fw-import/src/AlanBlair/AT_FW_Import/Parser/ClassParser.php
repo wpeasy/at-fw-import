@@ -3,6 +3,7 @@
 namespace AlanBlair\AT_FW_Import\Parser;
 
 use Advanced_Themer_Bricks\AT__Class_Importer;
+use AlanBlair\AT_FW_Import\App\AppController;
 
 
 class ClassParser
@@ -28,6 +29,11 @@ class ClassParser
         if(empty($this->_url)){ return ;}
 
         $classes = AT__Class_Importer::extract_selectors_from_css($this->_url);
+        $app = AppController::get_instance();
+        if($app->get_config()['logging']){
+            file_put_contents(__DIR__ . '/last-class-list', json_encode($classes, JSON_PRETTY_PRINT));
+        }
+        
 
         if(!is_array($classes)){ return [];};
 

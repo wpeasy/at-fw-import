@@ -1,39 +1,23 @@
 /***** START SCSS VARIABLES*/
 
 /* Lowercase color names from AT Color Pallets */
-$colors:(
-        'at-primary',
-        'at-action',
-        'at-secondary',
-        'at-accent',
-        'at-shade'
-);
+$colors:( 'at-primary', 'at-action', 'at-secondary', 'at-accent', 'at-shade');
+
 $color-white: #fff;
 $color-black: #000;
 $shadow-color: 0deg 0% 0%;
 
 /* All sizes are REM, so the same units are used for spacing, text and radius */
-$sizes : (
-        'xs': 0.5,
-        's': 1.2,
-        'n': 1.5,
-        'm': 2,
-        'l': 3,
-        'xl': 7,
-        '2xl': 11,
-        '3xl': 15,
-        '4xl': 24,
-        '5xl': 35
-);
+$sizes : ('xs': 0.5, 's': 1.2,'n': 1.5,'m': 2, 'l': 3,'xl': 5,'2xl': 7,'3xl': 12,'4xl': 24,'5xl': 35);
 
 /* Manally measure and update here */
 $header-heights:(
-        'large': 82px,
-        'desktop': 82px,
-        'tablet-portrait': 82px,
-        'mobile-landscape': 82px,
-        'mobile-portrait': 82px,
-        'xs': 82px,
+        'large': 84px,
+        'desktop': 84px,
+        'tablet-portrait': 84px,
+        'mobile-landscape': 54px,
+        'mobile-portrait': 54px,
+        'xs': 54px,
 );
 
 /* Breakpoints in px */
@@ -44,6 +28,70 @@ $breakpoint-tablet-portrait: 992px !default;
 $breakpoint-desktop: 1920px !default;
 $breakpoint-large: 10000px !default;
 
+/* Text Colunms */ 
+$text-column-gap: var(--at-size-clamp--l);
+$text-column-rule-style: solid;
+$text-column-rule-width: 1px;
+$text-column-rule-color: var(--at-shade-l-4);
+
+
+/* Buttons */
+$button-border-width: 0.25rem;
+$button-radius: 0;
+
+/* Focus */
+$focus-color: var(--at-action-l-3);
+$focus-width: 0.2rem;
+$focus-offset: 0.2rem;
+
+/* Forms */
+$form-input-border-radius: 0;
+$form-input-border-color: var(--at-shade-l-4);
+$form-input-border-width: 0.2rem;
+$form-input-padding: 1.5em;
+$form-input-focus-background: var(--at-shade-l-6);
+$form-input-focus-border-color: var(--at-accent);
+$form-check-bg-color: var(--at-action);
+
+$form-button-bg: var(--at-action);
+$form-button-color: var(--at-shade-l-6);
+$form-button-border: 0.25rem solid transparent;
+
+$form-dark-input-bg-color: var(--at-shade-d-6);
+$form-dark-input-color: var(--at-shade-l-6);
+$form-dark-input-border-color: var(--at-shade-d-4);
+$form-dark-label-bg-color: var(--at-shade-d-6);
+
+/* Offsets */
+$cta-offset: var(--at-size-clamp--2xl);
+$section-gap: var(--at-size-clamp--xl);
+$container-gap: var(--at-size-clamp--l);
+$content-gap: var(--at-size-clamp--s);
+
+$card-gap: var(--at-size-clamp--l);
+$card-padding: var(--x-size--s);
+$card-border: none;
+$card-bg-color: var(--at-primary-d-2);
+$card-box-shadow: var(--x-box-shadow--medium);
+$card-border-radius: var(--x-size--s);
+
+/* Animation */
+$animation-slow: 2s;
+$animation-medium: 1s;
+$animation-fast: 0.6s;
+$animation-x-fast: 0.3s;
+
+/*Box shadows */
+$box-shadows: (
+        small: "0.5px 1px 1px hsl(var(--x-shadow-color) / 0.2)",
+
+        medium: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1),2px 4px 4px hsl(var(--x-shadow-color) / 0.1), 3px 6px 6px hsl(var(--x-shadow-color) / 0.06)",
+
+        large: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1), 2px 4px 4px hsl(var(--x-shadow-color) / 0.05), 4px 8px 8px hsl(var(--x-shadow-color) / 0.1), 8px 16px 16px hsl(var(--x-shadow-color) / 0.1), 16px 32px 32px hsl(var(--x-shadow-color) / 0.15)"
+);
+
+
+/**** DO NOT EDIT THESE ***/
 $breakpoint-xs-down: $breakpoint-xs - 1px;
 $breakpoint-mobile-portrait-down: $breakpoint-mobile-portrait - 1px;
 $breakpoint-mobile-landscape-down: $breakpoint-mobile-landscape - 1px;
@@ -67,52 +115,6 @@ $breakpoints-down: (
         'mobile-landscape': $breakpoint-mobile-landscape-down,
         'mobile-portrait': $breakpoint-mobile-portrait-down,
         'xs': $breakpoint-xs-down,
-);
-
-/* Buttons */
-$button-border-width: 0.25rem;
-$button-radius: 0;
-
-/* Focus */
-$focus-color: var(--action-l-3);
-$focus-width: 0.2rem;
-$focus-offset: 0.2rem;
-
-/* Forms */
-$form-input-border-radius: 0;
-$form-input-border-color: var(--shade-l-4);
-$form-input-border-width: 0.2rem;
-$form-input-padding: 1.5em;
-$form-input-focus-background: var(--shade-l-6);
-$form-input-focus-border-color: var(--accent);
-$form-check-bg-color: var(--action);
-
-$form-button-bg: var(--action);
-$form-button-color: var(--shade-l-6);
-$form-button-border: 0.25rem solid transparent;
-
-$form-dark-input-bg-color: var(--shade-d-6);
-$form-dark-input-color: var(--shade-l-6);
-$form-dark-input-border-color: var(--shade-d-4);
-$form-dark-label-bg-color: var(--shade-d-6);
-
-/* Offsets */
-
-$cta-offset: var(--at-clamp-2xl);
-
-/* Animation */
-$animation-slow: 2s;
-$animation-medium: 1s;
-$animation-fast: 0.6s;
-$animation-x-fast: 0.3s;
-
-/*Box shadows */
-$box-shadows: (
-        small: "0.5px 1px 1px hsl(var(--x-shadow-color) / 0.2)",
-
-        medium: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1),2px 4px 4px hsl(var(--x-shadow-color) / 0.1), 3px 6px 6px hsl(var(--x-shadow-color) / 0.06)",
-
-        large: "1px 2px 2px hsl(var(--x-shadow-color) / 0.1), 2px 4px 4px hsl(var(--x-shadow-color) / 0.05), 4px 8px 8px hsl(var(--x-shadow-color) / 0.1), 8px 16px 16px hsl(var(--x-shadow-color) / 0.1), 16px 32px 32px hsl(var(--x-shadow-color) / 0.15)"
 );
 
 /***** END SCSS VARIABLES*/

@@ -45,7 +45,7 @@
         outline-color: var(--#{$color});
       }
     }
-    .focus--#{$color} *:focus {
+    .x-focus--#{$color} *:focus {
       outline-color: var(--#{$color});
     }
   }

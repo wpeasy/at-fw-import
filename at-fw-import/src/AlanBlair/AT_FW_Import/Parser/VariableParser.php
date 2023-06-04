@@ -92,8 +92,20 @@ class VariableParser
             }
         }
 
-        AppController::get_instance()->logger->debug(__METHOD__ . 'Parsed  Variables for ' . $this->_url);
+        /* Ad last parsed category */
+        if($current_category_array ){
+            $full_array[] = $current_category_array;
+        }
 
+        $app = AppController::get_instance();
+
+        $app->logger->debug(__METHOD__ . 'Parsed  Variables for ' . $this->_url);
+
+        if($app->get_config()['logging']){
+            file_put_contents(__DIR__ . '/last-processed-css.css', $this->_original_css );
+            file_put_contents(__DIR__ . '/last-variable-list', json_encode($full_array, JSON_PRETTY_PRINT));
+        }
+        
         set_transient($this->_transient_name, $full_array, 5);
 
         return $full_array;
