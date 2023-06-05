@@ -23,3 +23,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changes
 - Changed sample SASS code to work with WPCodeBox as it is more widely used
 - Added more CSS variables
+
+## [1.0.4] - 20231-06-05
+
+### Changes
+- Added Advanced Themer settings Export
+- Added example SASS partials for extending the framework

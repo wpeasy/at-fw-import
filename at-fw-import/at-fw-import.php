@@ -3,7 +3,7 @@
  * Plugin Name: Advanced Themer Framework Importer
  * Plugin URI: https://www.wpeasy.au
  * Description: This is a plugin to import Advanced Themer Framework variables and classes.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Alan Blair
  * Author URI: https://www.wpeasy.au
  * License: GPL2
