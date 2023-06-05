@@ -1,7 +1,6 @@
 @use '_framework_variables';
-@use '_my_variables';
 @use '_framework_mixins';
-@use '_my_framework';
+
 
 /* @at-category: X Site Defaults */
 :root{
@@ -460,3 +459,7 @@ ul.brxe-block , ol.brxe-block {
 .bf-gsap-scrub-to-0{
   opacity: 1;
 }
+
+
+@use '_my_variables';
+@use '_my_framework';
