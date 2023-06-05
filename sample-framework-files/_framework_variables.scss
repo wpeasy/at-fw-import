@@ -1,4 +1,4 @@
-/***** START SCSS VARIABLES*/
+/***** START FRAMEWORK SCSS VARIABLES*/
 
 /* Lowercase color names from AT Color Pallets */
 $colors:( 'at-primary', 'at-action', 'at-secondary', 'at-accent', 'at-shade');
@@ -28,7 +28,7 @@ $breakpoint-tablet-portrait: 992px !default;
 $breakpoint-desktop: 1920px !default;
 $breakpoint-large: 10000px !default;
 
-/* Text Colunms */ 
+/* Text Colunms */
 $text-column-gap: var(--at-size-clamp--l);
 $text-column-rule-style: solid;
 $text-column-rule-width: 1px;

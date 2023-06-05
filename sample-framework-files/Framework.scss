@@ -1,5 +1,7 @@
-@use '_variables';
-@use '_mixins';
+@use '_framework_variables';
+@use '_my_variables';
+@use '_framework_mixins';
+@use '_my_framework';
 
 /* @at-category: X Site Defaults */
 :root{
@@ -25,7 +27,7 @@
   --x-card-border-radius: #{$card-border-radius};
 }
 
-/* @at-category: Offsets */
+/* @at-category: X Offsets */
 :root{
   --x-cta-offset: #{$cta-offset};
   --x-cta-offset--neg: calc(-1 * var(--x-cta-offset));
@@ -246,18 +248,18 @@ a.x-clickable-parent{
 .x-text-columns--4{ column-count: 4 }
 
 @each $name, $value in $header-heights{
-    @include breakpoint-down($name){
-      .x-ingore{ display: none};
+  @include breakpoint-down($name){
+    .x-ingore{ display: none};
 
-      .x-text-columns--#{$name}-2{ 
-        column-count: 2
-      };
+    .x-text-columns--#{$name}-2{
+      column-count: 2
+    };
 
-      .x-text-columns--#{$name}-1{ 
-        column-count: 1
-      };
+    .x-text-columns--#{$name}-1{
+      column-count: 1
+    };
 
-    }
+  }
 }
 
 
@@ -443,12 +445,12 @@ ul.brxe-block , ol.brxe-block {
   list-style-type: none !important;
 }
 
-/* add bottom margin to any headings inside a Bricks Text Widget */ 
+/* add bottom margin to any headings inside a Bricks Text Widget */
 .brxe-text {
   h1,h2,h3,h4,h5,h6{
     margin-bottom: 0.25em;
   }
-    
+
 }
 
 

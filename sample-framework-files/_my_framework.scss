@@ -1,0 +1,7 @@
+/** My Framework **/
+
+/* @at-category: X MY Test */
+:root{
+  --my-test: red;
+}
+.my-test{ color: var(--my-test); }
