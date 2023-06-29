@@ -1,7 +1,6 @@
 <?php
 namespace AlanBlair\AT_FW_Import\App;
 
-use AlanBlair\AT_FW_Import\Helpers\Debugging_Logging;
 
 
 class AppController
@@ -33,7 +32,6 @@ class AppController
      */
     public function run()
     {
-        $this->logger = Debugging_Logging::get_instance($this->_config['debug'],$this->_config['logging'], $this->_config['log_path'] . '/atfwi/');
         Settings::get_instance();
         return self::$_instance;
     }

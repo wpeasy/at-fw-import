@@ -29,3 +29,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changes
 - Added Advanced Themer settings Export
 - Added example SASS partials for extending the framework
+
+## [1.0.5] - 20231-06-05
+
+### Fixed
+- Updated variable parser to fis bug parsing CSS for variables.
